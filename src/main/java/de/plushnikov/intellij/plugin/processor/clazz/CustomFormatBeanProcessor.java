@@ -86,8 +86,7 @@ public class CustomFormatBeanProcessor extends AbstractClassProcessor {
 
   private PsiMethod toBeanStringMethod(@NotNull PsiClass psiClass) {
     PsiManager psiManager = psiClass.getManager();
-    PsiElementFactory elementFactory = JavaPsiFacade.getElementFactory(psiManager.getProject());
-    PsiMethod methodFromText = elementFactory.createMethodFromText(TO_BEAN_FUNCTION, null);
+    PsiMethod methodFromText = JavaPsiFacade.getElementFactory(psiManager.getProject()).createMethodFromText(TO_BEAN_FUNCTION, null);
 
     return new LombokLightMethodBuilder(psiManager, TO_BEAN_FIELD_NAME)
       .withModifier(PsiModifier.PUBLIC)
@@ -100,8 +99,7 @@ public class CustomFormatBeanProcessor extends AbstractClassProcessor {
 
   private PsiMethod fromBeanStringMethod(@NotNull PsiClass psiClass) {
     PsiManager psiManager = psiClass.getManager();
-    PsiElementFactory elementFactory = JavaPsiFacade.getElementFactory(psiManager.getProject());
-    PsiMethod methodFromText = elementFactory.createMethodFromText(FROM_BEAN_METHOD, null);
+    PsiMethod methodFromText = JavaPsiFacade.getElementFactory(psiManager.getProject()).createMethodFromText(FROM_BEAN_METHOD, null);
 
     LombokLightMethodBuilder buildMethod = new LombokLightMethodBuilder(psiManager, FROM_BEAN_FIELD_NAME)
       .withModifier(PsiModifier.PUBLIC, PsiModifier.STATIC)
